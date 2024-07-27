@@ -1,10 +1,7 @@
 <script setup lang="ts">
-defineProps({
-  data: {
-    type: Array<CategoryDataType>,
-    required: true
-  }
-})
+import { useNavbarStore } from '@/stores'
+
+const store = useNavbarStore()
 defineEmits(['onItemClick'])
 </script>
 
@@ -14,7 +11,7 @@ defineEmits(['onItemClick'])
     <ul class="overflow-y-auto">
       <li
         class="text-lg py-1.5 px-2 active:bg-zinc-100"
-        v-for="(item, index) in data"
+        v-for="(item, index) in store.categoryData"
         :key="item.id"
         @click="$emit('onItemClick', index)"
       >
