@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import { useScroll } from '@vueuse/core'
 import MenuVue from '@/views/main/components/menu/index.vue'
+import { useNavbarStore } from '@/stores'
 
-defineProps({
-  data: {
-    type: Array<CategoryDataType>,
-    required: true
-  }
-})
+// pinia
+const store = useNavbarStore()
+store.setCategoryData()
 
 const sliderRef = ref<HTMLLIElement | null>(null)
 const sliderStyle = ref({
@@ -68,7 +66,7 @@ const onItemClick = (index: number) => {
         <m-svg-icon class="w-1.5 h-1.5" name="hamburger"></m-svg-icon>
       </li>
       <li
-        v-for="(item, index) in data"
+        v-for="(item, index) in store.categoryData"
         :key="item.id"
         class="shrink-0 px-1.5 py-0.5 z-10 duration-200 last:mr-4"
         :class="{ 'text-zinc-100': currentInex === index }"
@@ -80,7 +78,7 @@ const onItemClick = (index: number) => {
     </ul>
   </div>
   <m-popup v-model="showPopup">
-    <MenuVue :data="data" @on-item-click="onItemClick" />
+    <MenuVue @on-item-click="onItemClick" />
   </m-popup>
 </template>
 
