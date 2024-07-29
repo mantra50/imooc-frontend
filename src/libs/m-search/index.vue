@@ -75,7 +75,7 @@ onClickOutside(containerTarget, () => {
 
 <template>
   <div
-    class="group relative p-0.5 rounded-xl border-white duration-500 hover:bg-red-100/40"
+    class="group relative p-0.5 rounded-xl border-white dark:border-zinc-900 duration-500 hover:bg-red-100/40 dark:hover:bg-zinc-600"
     ref="containerTarget"
   >
     <div>
@@ -84,10 +84,11 @@ onClickOutside(containerTarget, () => {
         name="search"
         class="w-1.5 h-1.5 absolute top-[50%] translate-y-[-50%] left-2"
         color="#707070"
+        fill-class="dark:fill-zinc-200"
       ></m-svg-icon>
       <!-- 搜索框 -->
       <input
-        class="border-zinc-100 bg-zinc-50 block w-full h-[44px] rounded-xl pl-4 text-sm text-zinc-900 caret-zinc-400 border duration-500 tracking-wide group-hover:bg-white group-hover:border-zinc-200 focus:border-red-300 font-semibold outline-none"
+        class="border-zinc-100 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 block w-full h-[44px] rounded-xl pl-4 text-sm text-zinc-900 dark:text-zinc-200 caret-zinc-400 dark:caret-zinc-700 border duration-500 tracking-wide group-hover:bg-white group-hover:border-zinc-200 focus:border-red-300 font-semibold outline-none dark:group-hover:bg-zinc-800 dark:group-hover:border-zinc-600 dark:focus:border-zinc-800"
         type="text"
         placeholder="搜索"
         v-model="inputValue"
@@ -100,7 +101,7 @@ onClickOutside(containerTarget, () => {
         name="input-delete"
         v-show="inputValue"
         @click="onClearClick"
-        class="w-1.5 h-1.5 absolute top-[50%] translate-y-[-50%] right-7 duration-500"
+        class="w-1.5 h-1.5 absolute top-[50%] translate-y-[-50%] right-7 duration-500 cursor-pointer"
       />
       <!-- 分割符 -->
       <div
@@ -108,9 +109,10 @@ onClickOutside(containerTarget, () => {
       ></div>
       <!-- 搜索按钮 -->
       <m-button
-        class="absolute opacity-0 top-[50%] translate-y-[-50%] right-1 rounded-full w-3.5 h-3.5 group-hover:opacity-100 duration-700"
+        class="absolute opacity-0 top-[50%] translate-y-[-50%] right-1 rounded-full group-hover:opacity-100 duration-700"
         @click="onSearchHandler"
         icon="search"
+        size="small"
         icon-color="white"
       ></m-button>
     </div>
@@ -119,7 +121,7 @@ onClickOutside(containerTarget, () => {
       <div
         v-if="$slots.dropdown"
         v-show="isFocus"
-        class="max-h-[368px] w-full text-base overflow-auto bg-white absolute z-20 left-0 top-[56px] p-2 rounded border shadow-lg border-zinc-200 duration-200 hover:shadow-2xl"
+        class="max-h-[368px] w-full text-base overflow-auto bg-white absolute z-20 left-0 top-[58px] p-2 rounded border shadow-lg border-zinc-200 duration-200 hover:shadow-2xl dark:bg-zinc-900 dark:border-zinc-700 dark:hover:shadow-zinc-700"
       >
         <slot name="dropdown" />
       </div>

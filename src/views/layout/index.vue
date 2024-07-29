@@ -5,7 +5,7 @@ import MainVue from './components/main.vue'
 </script>
 
 <template>
-  <header-vue class="h-header"></header-vue>
+  <header-vue class="h-header dark:bg-zinc-900"></header-vue>
 
   <main-vue class="h-main"> </main-vue>
   <floating></floating>

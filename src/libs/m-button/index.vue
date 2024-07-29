@@ -4,9 +4,10 @@ const CLICK_EMIT = 'click'
 
 // type 可选项：表示按钮风格
 const typeEnum = {
-  primary: 'text-white  bg-zinc-800 hover:bg-zinc-900 active:bg-zinc-800 px-1',
-  main: 'text-white  bg-main hover:bg-hover-main active:bg-main px-1',
-  info: 'text-zinc-800 bg-zinc-200 hover:bg-zinc-300 active:bg-zinc-200 px-1'
+  primary:
+    'text-white bg-zinc-800 dark:bg-zinc-900 hover:bg-zinc-900 dark:hover:bg-zinc-700 active:bg-zinc-800 dark:active:bg-zinc-700 ',
+  main: 'text-white bg-main dark:bg-zinc-900 hover:bg-hover-main dark:hover:bg-zinc-900 active:bg-main dark:active-bg-zinc-700 ',
+  info: 'text-zinc-800 dark:text-zinc-300 bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600 active:bg-zinc-200 dark:active:bg-zinc-700'
 }
 
 // size 可选项：表示按钮大小。区分文字按钮和icon按钮
@@ -87,7 +88,7 @@ const props = defineProps({
 
 const emits = defineEmits([CLICK_EMIT])
 const sizeKey = computed(() => {
-  return props.icon ? 'icon-' + props.size : props.size
+  return props.icon ? `icon-${props.size}` : props.size
 })
 
 const onClick = () => {
@@ -111,6 +112,7 @@ const onClick = () => {
       name="loading"
       class="w-2 h-2 animate-spin mr-1"
     ></m-svg-icon>
+
     <m-svg-icon
       v-if="icon"
       :name="icon"
