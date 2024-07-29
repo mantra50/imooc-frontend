@@ -12,6 +12,7 @@ declare module 'vue' {
     MPopup: typeof import('./../libs/m-popup/index.vue')['default']
     MSearch: typeof import('./../libs/m-search/index.vue')['default']
     MSvgIcon: typeof import('./../libs/m-svg-icon/index.vue')['default']
+    MWaterfall: typeof import('./../libs/m-waterfall/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
