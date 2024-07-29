@@ -10,14 +10,22 @@ const pexelsList = ref<PexelsDataType[]>([])
 const getPexels = async () => {
   const { list } = await getPexelsList(query)
   pexelsList.value = list
-  console.log(pexelsList.value)
 }
 getPexels()
 </script>
 
 <template>
   <div>
-    <ItemVue v-for="item in pexelsList" :key="item.id" :data="item"></ItemVue>
+    <m-waterfall
+      :data="pexelsList"
+      :column="5"
+      node-key="id"
+      :picture-pre-reading="false"
+    >
+      <template #default="{ item, width }">
+        <ItemVue :data="item"></ItemVue>
+      </template>
+    </m-waterfall>
   </div>
 </template>
 

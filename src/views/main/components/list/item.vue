@@ -3,13 +3,16 @@ defineProps({
   data: {
     type: Object as () => PexelsDataType,
     required: true
+  },
+  width: {
+    type: String
   }
 })
 </script>
 
 <template>
   <div
-    class="bg-white dark:bg-zinc-900 xl:dark:bg-zinc-800 w-[230px] h-[280px] rounded pb-1"
+    class="bg-white dark:bg-zinc-900 xl:dark:bg-zinc-800 w-[230px] rounded pb-1"
   >
     <div class="relative w-full rounded cursor-zoom-in group">
       <!-- 图片 -->
