@@ -14,3 +14,26 @@ declare interface CategoryDataType {
   col: number
   urlname: string
 }
+
+declare interface PexelsListApiType {
+  list: PexelsDataType[]
+  total: number
+  page: number
+  size: number
+}
+
+declare interface PexelsDataType {
+  _id: string
+  photoLink: string
+  photo: string
+  authorLike: string
+  avatar: string
+  author: string
+  photoDownLink: string
+  id: string
+  title: string
+  photoWidth: number
+  photoHeight: number
+  photoType: string
+  __v: number
+}

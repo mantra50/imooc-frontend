@@ -48,20 +48,20 @@ const onItemClick = (index: number) => {
 </script>
 
 <template>
-  <div class="bg-white sticky top-0 left-0 z-10">
+  <div class="bg-white sticky top-0 left-0 z-10 dark:bg-zinc-800">
     <ul
       ref="ulTarget"
-      class="relative flex overflow-x-auto p-1 text-xs text-zinc-600 overflow-hidden"
+      class="relative flex overflow-x-auto p-1 text-xs text-zinc-600 overflow-hidden dark:text-zinc-200"
     >
       <li
         ref="sliderRef"
-        class="absolute h-[24px] duration-200 bg-zinc-900 rounded-lg"
+        class="absolute h-[24px] duration-200 bg-zinc-900 rounded-lg dark:bg-zinc-900"
         :style="sliderStyle"
       ></li>
       <!-- 汉堡按钮 -->
       <li
         @click="showPopupClick"
-        class="z-20 fixed top-0 right-[-1px] h-4 px-1 flex items-center bg-white shadow-l-white"
+        class="z-20 fixed top-0 right-[-1px] h-4 px-1 flex items-center bg-white dark:bg-zinc-900 shadow-l-white dark:shadow-l-zinc"
       >
         <m-svg-icon class="w-1.5 h-1.5" name="hamburger"></m-svg-icon>
       </li>
@@ -69,7 +69,7 @@ const onItemClick = (index: number) => {
         v-for="(item, index) in store.categoryData"
         :key="item.id"
         class="shrink-0 px-1.5 py-0.5 z-10 duration-200 last:mr-4"
-        :class="{ 'text-zinc-100': currentInex === index }"
+        :class="{ 'text-zinc-100 dark:text-zinc-300': currentInex === index }"
         :ref="setItemsRef"
         @click="onItemClick(index)"
       >
