@@ -41,3 +41,8 @@ declare interface PexelsDataType extends Record<string, string | number> {
     left: number | string
   }
 }
+
+declare interface SearchHintApiType {
+  total: number
+  result: string[]
+}
