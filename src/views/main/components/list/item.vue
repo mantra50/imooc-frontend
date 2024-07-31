@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { message } from '@/libs'
 import { randomRGB } from '@/utils/color'
-import { useFullscreen } from '@vueuse/core'
+import { useElementBounding, useFullscreen } from '@vueuse/core'
 import { saveAs } from 'file-saver'
 
 const props = defineProps({
@@ -13,6 +13,8 @@ const props = defineProps({
     type: Number
   }
 })
+
+const emits = defineEmits(['onClick'])
 
 const rgb = randomRGB()
 
@@ -31,10 +33,36 @@ const onDownload = () => {
  */
 const imgTarget = ref<HTMLImageElement | null>(null)
 const { enter: onImgFullScreen } = useFullscreen(imgTarget)
+
+/**
+ * 计算图片中心点，动画以中心点开始（x|y 位置 + 宽高/2)
+ */
+const {
+  x: imgContainerX,
+  y: imgContainerY,
+  width: imgContainerWidht,
+  height: imgContainerHeight
+} = useElementBounding(imgTarget)
+const imgContainerCenter = computed(() => {
+  return {
+    translateX: Math.floor(imgContainerX.value + imgContainerWidht.value / 2),
+    translateY: Math.floor(imgContainerY.value + imgContainerHeight.value / 2)
+  }
+})
+
+const onToPinsClick = () => {
+  emits('onClick', {
+    id: props.data.id,
+    location: imgContainerCenter.value
+  })
+}
 </script>
 
 <template>
-  <div class="bg-white dark:bg-zinc-900 xl:dark:bg-zinc-800 rounded pb-1">
+  <div
+    class="bg-white dark:bg-zinc-900 xl:dark:bg-zinc-800 rounded pb-1"
+    @click="onToPinsClick"
+  >
     <div
       class="relative w-full rounded cursor-zoom-in group duration-200"
       :style="{ backgroundColor: rgb }"

@@ -55,3 +55,20 @@ declare interface ThemeType {
   photo: string
   title: string
 }
+
+declare interface PexelType {
+  tags: string[]
+  _id: string
+  photoLink: string
+  photo: string
+  authorLike: string
+  avatar: string
+  author: string
+  photoDownLink: string
+  id: string
+  title: string
+  photoWidth: number
+  photoHeight: number
+  photoType: string
+  __v: number
+}
