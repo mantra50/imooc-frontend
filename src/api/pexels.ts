@@ -12,3 +12,15 @@ export const getPexelsList = (params: pexelsParamsType) => {
     params
   })
 }
+
+/**
+ * 获取搜索提示
+ */
+export const getHint = (q: string) => {
+  return request<SearchHintApiType>({
+    url: '/pexels/hint',
+    params: {
+      q
+    }
+  })
+}
