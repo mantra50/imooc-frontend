@@ -7,7 +7,7 @@ const themeArr = [
 </script>
 
 <template>
-  <m-popover placement="bottom-left">
+  <m-popover placement="bottom-left" class="guide-my">
     <template #reference>
       <div
         class="relative flex items-center p-0.5 rounded-sm cursor-pointer duration-200 hover:bg-zinc-100/60 outline-none dark:hover:bg-zinc-900"
