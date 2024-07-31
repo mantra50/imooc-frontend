@@ -46,3 +46,12 @@ declare interface SearchHintApiType {
   total: number
   result: string[]
 }
+
+declare interface ThemesApiType {
+  themes: ThemeType[]
+}
+declare interface ThemeType {
+  id: string
+  photo: string
+  title: string
+}

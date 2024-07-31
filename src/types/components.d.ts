@@ -8,7 +8,9 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     MButton: typeof import('./../libs/m-button/index.vue')['default']
+    MConfirm: typeof import('./../libs/m-confirm/index.vue')['default']
     MInfinite: typeof import('./../libs/m-infinite/index.vue')['default']
+    MMessage: typeof import('./../libs/m-message/index.vue')['default']
     MPopover: typeof import('./../libs/m-popover/index.vue')['default']
     MPopup: typeof import('./../libs/m-popup/index.vue')['default']
     MSearch: typeof import('./../libs/m-search/index.vue')['default']

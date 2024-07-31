@@ -32,11 +32,25 @@ const reset = (newQuery: pexelsParamsType) => {
   isFinished.value = false
   pexelsList.value = []
 }
+
 const appStore = useAppStore()
+/**
+ * 分类和列表联动
+ */
 watch(
   () => appStore.currentCategory,
   (newCategory) => {
     reset({ page: 1, categoryId: newCategory.id })
+  }
+)
+
+/**
+ * 搜索框联动
+ */
+watch(
+  () => appStore.searchText,
+  (newText) => {
+    reset({ page: 1, searchText: newText })
   }
 )
 </script>

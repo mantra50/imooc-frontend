@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import { message } from '@/libs'
 import { randomRGB } from '@/utils/color'
+import { useFullscreen } from '@vueuse/core'
+import { saveAs } from 'file-saver'
 
-defineProps({
+const props = defineProps({
   data: {
     type: Object as () => PexelsDataType,
     required: true
@@ -12,6 +15,22 @@ defineProps({
 })
 
 const rgb = randomRGB()
+
+/**
+ * 下载按钮点击事件
+ */
+const onDownload = () => {
+  message('success', '图片开始下载')
+  setTimeout(() => {
+    saveAs(props.data.photoDownLink)
+  }, 100)
+}
+
+/**
+ * 生成全屏方法
+ */
+const imgTarget = ref<HTMLImageElement | null>(null)
+const { enter: onImgFullScreen } = useFullscreen(imgTarget)
 </script>
 
 <template>
@@ -23,6 +42,7 @@ const rgb = randomRGB()
       <!-- 图片 -->
       <img
         v-lazy
+        ref="imgTarget"
         class="rounded w-full bg-transparent"
         :src="data.photo"
         :style="{
@@ -35,26 +55,32 @@ const rgb = randomRGB()
       <div
         class="hidden opacity-0 w-full h-full bg-zinc-900/50 absolute top-0 left-0 rounded duration-300 group-hover:opacity-100 xl:block"
       >
+        <!-- 分享 -->
         <m-button class="absolute top-1.5 left-1.5">分享</m-button>
+        <!-- 喜欢 -->
         <m-button
           class="absolute top-1.5 right-1.5"
           type="info"
           icon="heart"
           iconClass="fill-zinc-900 dark:fill-zinc-200"
         />
+        <!-- 下载 -->
         <m-button
           class="absolute bottom-1.5 left-1.5 bg-zinc-100/70"
           type="info"
           size="small"
           icon="download"
           iconClass="fill-zinc-900 dark:fill-zinc-200"
+          @click="onDownload"
         />
+        <!-- 全屏 -->
         <m-button
           class="absolute bottom-1.5 right-1.5 bg-zinc-100/70"
           type="info"
           size="small"
           icon="full"
           iconClass="fill-zinc-900 dark:fill-zinc-200"
+          @click="onImgFullScreen"
         />
       </div>
     </div>

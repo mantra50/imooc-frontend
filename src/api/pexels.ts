@@ -24,3 +24,12 @@ export const getHint = (q: string) => {
     }
   })
 }
+
+/**
+ * 获取热门主题
+ */
+export const getTheme = () => {
+  return request<ThemesApiType>({
+    url: '/pexels/themes'
+  })
+}

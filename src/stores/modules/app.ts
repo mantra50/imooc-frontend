@@ -5,7 +5,9 @@ import { useNavbarStore } from './navigationbar'
 export const useAppStore = defineStore('app', () => {
   const navbar = useNavbarStore()
 
+  // 分类和列表联动数据
   const currentCategory = ref(ALL_CATEGORY_ITEM)
+  // 更改分类
   const changeCurrentCategory = (newCategory: CategoryDataType) => {
     currentCategory.value = newCategory
   }
@@ -20,9 +22,16 @@ export const useAppStore = defineStore('app', () => {
     })
   }
 
+  // 搜索和列表联动数据
+  const searchText = ref('')
+  const changeSearchText = (newText: string) => {
+    searchText.value = newText
+  }
   return {
     currentCategory,
     changeCurrentCategory,
-    currentCategoryIndex
+    currentCategoryIndex,
+    searchText,
+    changeSearchText
   }
 })

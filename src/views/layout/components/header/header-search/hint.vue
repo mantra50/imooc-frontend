@@ -13,12 +13,10 @@ const emits = defineEmits(['itemClick'])
 
 const hintList = ref<string[]>([])
 const onSearch = async () => {
-  if (!props.searchText) {
-    hintList.value = []
-    return
-  }
-  const res = await getHint(props.searchText)
-  hintList.value = res.result
+  if (!props.searchText) return
+
+  const { result } = await getHint(props.searchText)
+  hintList.value = result
 }
 
 // vueuse 的防抖工具 功能跟 watch 一样，但是可以定义防抖时间
@@ -48,7 +46,7 @@ const heightlightText = (text: string) => {
     <div
       v-for="(item, index) in hintList"
       :key="index"
-      class="py-1 pl-1 text-base font-bold text-zinc-400 rounded-sm duration-200 hover:bg-zinc-100 dark:hover:bg-zinc-900"
+      class="py-1 pl-1 text-base font-bold text-zinc-400 rounded-sm duration-200 hover:bg-zinc-100 dark:hover:bg-zinc-900 cursor-pointer"
       v-html="heightlightText(item)"
       @click="onItemClick(item)"
     ></div>
