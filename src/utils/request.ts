@@ -1,3 +1,4 @@
+import { useUserStore } from '@/stores'
 import axios, { type AxiosRequestConfig, type AxiosResponse } from 'axios'
 
 const instance = axios.create({
@@ -5,10 +6,27 @@ const instance = axios.create({
   timeout: 5000
 })
 
-instance.interceptors.request.use((config) => {
-  config.headers.icode = 'helloqianduanxunlianying'
-  return config
-})
+instance.interceptors.request.use(
+  (config) => {
+    config.headers.icode = 'helloqianduanxunlianying'
+    const userStore = useUserStore()
+    if (userStore.token) {
+      config.headers.Authorization = `Bearer ${userStore.token}`
+    }
+    return config
+  },
+  (error) => {
+    const userStore = useUserStore()
+    if (
+      error.response &&
+      error.response.data &&
+      error.response.data.status === 401
+    ) {
+      userStore.logout()
+    }
+    return Promise.reject(error)
+  }
+)
 
 instance.interceptors.response.use(
   (response: AxiosResponse<RequestType, any>) => {

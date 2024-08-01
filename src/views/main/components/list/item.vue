@@ -60,7 +60,7 @@ const onToPinsClick = () => {
 
 <template>
   <div
-    class="bg-white dark:bg-zinc-900 xl:dark:bg-zinc-800 rounded pb-1"
+    class="bg-white dark:bg-zinc-900 xl:dark:bg-zinc-800 rounded pb-1 duration-500"
     @click="onToPinsClick"
   >
     <div
