@@ -42,3 +42,5 @@ export enum THEME_TYPE {
   // 跟随系统
   THEME_SYSTEM = 'THEME_SYSTEM'
 }
+
+export const LOGIN_TYPE_USERNAME = 'username'

@@ -8,6 +8,7 @@ declare interface RequestType {
 declare interface CategoryApiType {
   categorys: CategoryDataType[]
 }
+
 declare interface CategoryDataType {
   id: string
   name: string
@@ -70,5 +71,28 @@ declare interface PexelType {
   photoWidth: number
   photoHeight: number
   photoType: string
+  __v: number
+}
+
+declare interface LoginUserApiType {
+  code: number
+  token: string
+}
+
+declare interface UserInfoApiType {
+  qqOpenId: string
+  wxOpenId: string
+  nickname: string
+  title: string
+  company: string
+  homePage: string
+  introduction: string
+  vipLevel: number
+  regTime: string
+  avatar: string
+  outTradeNo: string
+  payResult: boolean
+  _id: string
+  username: string
   __v: number
 }
