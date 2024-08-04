@@ -19,10 +19,14 @@ import {
   validateConfirmPassword
 } from '../validate'
 import { LOGIN_TYPE_USERNAME } from '@/constants'
+import { useAppStore } from '@/stores'
 
 const router = useRouter()
-
+const route = useRoute()
+const appStore = useAppStore()
 const onToLogin = () => {
+  // 移动端下跳转类型
+  appStore.routerType = 'push'
   router.push('/login')
 }
 
@@ -45,7 +49,11 @@ const onRegister = async () => {
     password: registerForm.value.password
   }
   try {
-    await userStore.register(payload)
+    // 触发注册，携带第三方数据
+    await userStore.register({
+      ...payload,
+      ...route.query
+    })
     await userStore.useLoginUser({
       ...payload,
       loginType: LOGIN_TYPE_USERNAME

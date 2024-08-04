@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { confirm } from '@/libs'
+import { useAppStore } from '@/stores'
 import { useUserStore } from '@/stores/modules/user'
 
 type ThemeArrItem = {
@@ -15,7 +16,10 @@ const themeArr = [
 ]
 
 const router = useRouter()
+const appStore = useAppStore()
 const onLoginClick = () => {
+  // 移动端下跳转类型
+  appStore.routerType = 'push'
   router.push('/login')
 }
 
@@ -28,6 +32,8 @@ const onItemClick = (item: ThemeArrItem) => {
     })
     return
   }
+  // 移动端下跳转类型
+  appStore.routerType = 'push'
   router.push(item.path)
 }
 </script>

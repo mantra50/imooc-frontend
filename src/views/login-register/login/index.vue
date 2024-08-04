@@ -15,6 +15,8 @@ import { validatePassword, validateUsername } from '../validate'
 import SliderCaptcha from './slider-captcha.vue'
 import { useUserStore } from '@/stores/modules/user'
 import { LOGIN_TYPE_USERNAME } from '@/constants'
+import { useAppStore } from '@/stores'
+import qqLoginVue from './qq-login.vue'
 
 const isVisableCaphtcha = ref(false)
 
@@ -28,8 +30,10 @@ const onCaphtchaSuccess = () => {
 }
 
 const router = useRouter()
-
+const appStore = useAppStore()
 const onToRegister = () => {
+  // 移动端下跳转类型
+  appStore.routerType = 'push'
   router.push('/register')
 }
 
@@ -107,7 +111,7 @@ const onLogin = async () => {
     <!-- 第三方登录 -->
     <div class="flex justify-around mt-2">
       <!-- QQ -->
-      <m-svg-icon class="w-4 h-4 cursor-pointer" name="qq"></m-svg-icon>
+      <qq-login-vue></qq-login-vue>
       <!-- 微信 -->
       <m-svg-icon class="w-4 h-4 cursor-pointer" name="wexin"></m-svg-icon>
     </div>

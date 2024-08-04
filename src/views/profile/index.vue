@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { putProfile } from '@/api/sys'
 import { confirm, message } from '@/libs'
-import { useUserStore } from '@/stores'
+import { useAppStore, useUserStore } from '@/stores'
 import { isMobileTerminal } from '@/utils/flexibel'
 import changeAvatarVue from './components/change-avatar.vue'
 
@@ -15,7 +15,10 @@ const inputFileTarget = ref<HTMLInputElement | null>(null)
 /**
  * 移动端：后退
  */
+const appStore = useAppStore()
 const onNavbarLeftclick = () => {
+  // 移动端下跳转类型
+  appStore.routerType = 'back'
   router.back()
 }
 

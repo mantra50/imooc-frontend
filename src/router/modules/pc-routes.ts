@@ -13,6 +13,19 @@ export default [
         meta: {
           user: true
         }
+      },
+      {
+        path: '/member',
+        name: 'member',
+        component: () => import('@/views/member/index.vue'),
+        meta: {
+          user: true
+        }
+      },
+      {
+        path: '/pay/result',
+        name: 'payResult',
+        component: () => import('@/views/pay/index.vue')
       }
     ]
   },
