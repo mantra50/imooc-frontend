@@ -1,6 +1,8 @@
 import { ALL_CATEGORY_ITEM } from '@/constants'
 import { defineStore } from 'pinia'
 import { useNavbarStore } from './navigationbar'
+import { isMobileTerminal } from '@/utils/flexibel'
+import type { routerType } from '@/libs/m-transition-router-view/index.vue'
 
 export const useAppStore = defineStore('app', () => {
   const navbar = useNavbarStore()
@@ -27,11 +29,23 @@ export const useAppStore = defineStore('app', () => {
   const changeSearchText = (newText: string) => {
     searchText.value = newText
   }
+
+  // 路由跳转方式
+  const routerType = ref<routerType>('none')
+  const getRouterType = computed(() => {
+    if (!isMobileTerminal.value) {
+      return 'none'
+    }
+    return routerType.value
+  })
+
   return {
     currentCategory,
     changeCurrentCategory,
     currentCategoryIndex,
     searchText,
-    changeSearchText
+    changeSearchText,
+    routerType,
+    getRouterType
   }
 })

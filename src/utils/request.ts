@@ -17,6 +17,7 @@ instance.interceptors.request.use(
   },
   (error) => {
     const userStore = useUserStore()
+    console.log(error)
     if (
       error.response &&
       error.response.data &&

@@ -17,6 +17,9 @@ export const useUserStore = defineStore(
         ...data,
         password: password ? md5(password) : ''
       })
+      if (res.code === 204) {
+        return res.code
+      }
       token.value = res.token
       getUserInfo()
     }
@@ -64,7 +67,8 @@ export const useUserStore = defineStore(
       userInfo,
       logout,
       register,
-      setUserInfo
+      setUserInfo,
+      getUserInfo
     }
   },
   {

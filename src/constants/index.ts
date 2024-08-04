@@ -44,3 +44,9 @@ export enum THEME_TYPE {
 }
 
 export const LOGIN_TYPE_USERNAME = 'username'
+export const LOGIN_TYPE_QQ = 'qq'
+
+export const LOGIN_TYPE_OAUTH_NO_REGISTER_CODE = 204
+
+// 兔小巢反馈地址
+export const FEEDBACK_URL = 'https://txc.qq.com/products/664067'

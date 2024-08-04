@@ -2,6 +2,7 @@
 import { driver, type Driver } from 'driver.js'
 import 'driver.js/dist/driver.css'
 import steps from './header/steps'
+import { FEEDBACK_URL } from '@/constants'
 
 let driverObj: Driver
 onMounted(() => {
@@ -17,6 +18,10 @@ onMounted(() => {
 const onGuideClick = () => {
   driverObj.setSteps(steps)
   driverObj.drive()
+}
+
+const onToFeedback = () => {
+  window.open(FEEDBACK_URL, '__black')
 }
 </script>
 
@@ -50,6 +55,7 @@ const onGuideClick = () => {
       <div class="w-[140px] overflow-hidden">
         <div
           class="flex items-center p-1 text-sm cursor-pointer rounded hover:bg-zinc-100/60 dark:hover:bg-zinc-800"
+          @click="onToFeedback"
         >
           <m-svg-icon
             name="feedback"

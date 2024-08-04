@@ -96,3 +96,12 @@ declare interface UserInfoApiType {
   username: string
   __v: number
 }
+
+declare interface VipListType {
+  desc: string
+  id: number
+  isHot: boolean
+  oldPrice: string
+  price: string
+  title: string
+}
